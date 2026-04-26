@@ -1,3 +1,7 @@
+
+# Project-1
+Exercises for University of Helsinki Full Stack Open course.
+
 ## Exercise 0.4: New Note Diagram
 
 ```mermaid
@@ -33,6 +37,3 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
-
-# Project-1
-Exercises for University of Helsinki Full Stack Open course.
