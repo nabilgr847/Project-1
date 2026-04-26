@@ -2,7 +2,6 @@
 Exercises for University of Helsinki Full Stack Open course.
 
 ## Exercise 0.4: New Note Diagram
-
 ```mermaid
 sequenceDiagram
     participant browser
@@ -40,26 +39,36 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/spa](https://studies.cs.helsinki.fi/exampleapp/spa)
     activate server
     server-->>browser: HTML document
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/main.css](https://studies.cs.helsinki.fi/exampleapp/main.css)
     activate server
     server-->>browser: the css file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/spa.js](https://studies.cs.helsinki.fi/exampleapp/spa.js)
     activate server
     server-->>browser: the JavaScript file
     deactivate server
 
-    Note right of browser: The browser starts executing JS code that fetches JSON from server
+    Note right of browser: The browser fetches JSON from server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/data.json](https://studies.cs.helsinki.fi/exampleapp/data.json)
     activate server
-    server-->>browser: [{ "content": "SPA is awesome!", "date": "2026-04-26" }, ... ]
+    server-->>browser: [{ "content": "SPA load", "date": "2026-04-26" }, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Note right of browser: The browser renders the notes using JS
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: JS handler adds note to list and rerenders it locally
+
+    browser->>server: POST [https://studies.cs.helsinki.fi/exampleapp/new_note_spa](https://studies.cs.helsinki.fi/exampleapp/new_note_spa)
+    activate server
+    server-->>browser: 201 Created
+    deactivate server
