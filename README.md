@@ -1,7 +1,8 @@
-# Project-1
-Exercises for University of Helsinki Full Stack Open course.
+# Full Stack Open - Part 0
 
-## Exercise 0.4: New Note Diagram
+## Exercise 0.4: New note diagram
+The following diagram depicts the situation where the user creates a new note on the page.
+
 ```mermaid
 sequenceDiagram
     participant browser
@@ -9,7 +10,7 @@ sequenceDiagram
 
     browser->>server: POST [https://studies.cs.helsinki.fi/exampleapp/new_note](https://studies.cs.helsinki.fi/exampleapp/new_note)
     activate server
-    server-->>browser: HTTP status code 302 (Redirect to /notes)
+    server-->>browser: HTTP 302 Redirect to /notes
     deactivate server
 
     browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/notes](https://studies.cs.helsinki.fi/exampleapp/notes)
@@ -31,44 +32,7 @@ sequenceDiagram
 
     browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/data.json](https://studies.cs.helsinki.fi/exampleapp/data.json)
     activate server
-    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    server-->>browser: JSON data
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
-sequenceDiagram
-    participant browser
-    participant server
-
-    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/spa](https://studies.cs.helsinki.fi/exampleapp/spa)
-    activate server
-    server-->>browser: HTML document
-    deactivate server
-
-    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/main.css](https://studies.cs.helsinki.fi/exampleapp/main.css)
-    activate server
-    server-->>browser: the css file
-    deactivate server
-
-    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/spa.js](https://studies.cs.helsinki.fi/exampleapp/spa.js)
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
-
-    Note right of browser: The browser fetches JSON from server
-
-    browser->>server: GET [https://studies.cs.helsinki.fi/exampleapp/data.json](https://studies.cs.helsinki.fi/exampleapp/data.json)
-    activate server
-    server-->>browser: [{ "content": "SPA load", "date": "2026-04-26" }, ... ]
-    deactivate server
-
-    Note right of browser: The browser renders the notes using JS
-sequenceDiagram
-    participant browser
-    participant server
-
-    Note right of browser: JS handler adds note to list and rerenders it locally
-
-    browser->>server: POST [https://studies.cs.helsinki.fi/exampleapp/new_note_spa](https://studies.cs.helsinki.fi/exampleapp/new_note_spa)
-    activate server
-    server-->>browser: 201 Created
-    deactivate server
